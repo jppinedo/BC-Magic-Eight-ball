@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Juan Pablo Pinedo">
+  <title>Magic Eight Ball</title>
+  <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <article class="main-card ">
+    <div class="dropshadow"></div>
+    <div class="card-content flex">
+      <div> 
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" fill="black" stroke="white" stroke-width="5"/>
+          <circle cx="50" cy="50" r="25" fill="white"/>
+          <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="20" fill="black">8</text>
+        </svg>
+      </div>
+      <div>
+        <h1>Thank you!</h1>
+        <h3>For using the Magic Eight Ball</h3>
+      </div>
+    </div>
+  </article>
+  
+
+  <script type="text/javascript">
+    let running = true; // set default state of the program
+    let userInput; // user input set as undefined by default
+    let giveAnswer = false; // controls the answer / question mode
+    const prompts = { // stores all prompt texts
+      questionText: 'Ask a question to the Magic Eight Ball.',
+      doneText: 'Write "Done" when you are finished.'
+    }
+    const errors = { // stores all error texts
+      emptyInput: 'Error: No question detected. Please write a question.',
+      nullInput: `Error: Operation canceled. ${prompts.doneText}`,
+    }
+    const answers = [
+      // Affirmative Answers
+      'Absolutely!',
+      'No doubt about it.',
+      'It\'s a resounding yes.',
+      'The stars say yes.',
+      'All signs point to yes.',
+      'You can bank on it.',
+      'Definitely in your favor.',
+      'The odds are excellent.',
+      'It\'s looking bright.',
+      'Count on it!',
+
+      // Non-Committal Answers
+      'Unclear—try again.',
+      'Too soon to say.',
+      'Ask later when the time feels right.',
+      'The universe isn\'t sure yet.',
+      'Wait and see.',
+
+      // Negative Answers
+      'Not looking good.',
+      'My instincts say no.',
+      'Highly unlikely.',
+      'Don\'t hold your breath.',
+      'The answer is no.'
+    ]
+
+    while(running) {
+      // the user cancelled the prompt  
+      if(userInput === null) {
+        alert(errors.nullInput); // show error
+        userInput = undefined; // reset user input
+        giveAnswer = false; // reset answer mode
+
+      // input is empty
+      } else if(userInput?.trim() === '') {
+        alert(errors.emptyInput); // show error
+        userInput = undefined; // reset user input
+        giveAnswer = false; // reset answer mode
+
+      // user is done stop the loop
+      } else if(userInput?.toLowerCase() === 'done') {
+        running = false;
+      
+      // is answer mode, and the question is valid 
+      } else if(giveAnswer) {
+        // get random index
+        const index = Math.floor(Math.random() * 20);
+        alert(answers[index]); // show answer
+        giveAnswer = false; // reset mode
+
+      // input is valid, assume is a question
+      } else {
+        // prompt and save user input
+        userInput = prompt(`${prompts.questionText} \n${prompts.doneText}`);
+        // set answer mode to true
+        giveAnswer = true;
+      }
+      
+    }
+  </script>
+</body> 
+</html>

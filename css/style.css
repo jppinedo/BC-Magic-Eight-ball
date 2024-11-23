@@ -1,0 +1,72 @@
+
+body {
+    background-color: #e67a32;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.main-card {
+    position: relative;
+    max-width: 430px;
+    height: 230px;
+    background-color: #c84d2e;
+    padding: 2rem;
+    margin: 8rem auto;
+    border-radius: 0.5rem;
+}
+.card-content {
+    padding-top: 60px;
+}
+.flex {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+h1 {
+    font-family: "Coiny", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+    font-size: 50px;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    line-height: 0.5;
+}
+h3 {
+    color: #2f231e;
+}
+
+.dropshadow {
+    position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 400px;
+  height: 770px;
+  background-color: #5e4338;
+  transform: translateX(271px) translateY(25px) rotateZ(-31deg) skewX(10deg) translateY(385px) scaleX(1.42) scaleY(2);
+}
+
+@media only screen and (max-width: 600px) {
+    .main-card {
+        max-width: inherit;
+        height: inherit;
+    }
+    .dropshadow {
+        display: none;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    body {
+        width: inherit;
+        height: inherit;
+        overflow: inherit;
+    }
+    .card-content {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
